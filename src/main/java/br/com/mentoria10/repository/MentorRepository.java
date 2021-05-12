@@ -1,5 +1,5 @@
 package br.com.mentoria10.repository;
 
-public class MentorRepository {
+public interface MentorRepository {
 
 }
