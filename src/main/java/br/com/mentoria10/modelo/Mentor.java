@@ -5,13 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "mentores")
 @NoArgsConstructor
+@Getter @Setter
 public class Mentor {
 	
 	@Id
@@ -24,32 +29,13 @@ public class Mentor {
 	
 	@Column(name = "matricula")
 	private String matricula;
-
 	
+	@ManyToOne
+	private Long alunoId;
 	
-	public Long getId() {
-		return id;
-	}
+	@OneToOne
+	private Long turmaId;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
 
 
 }

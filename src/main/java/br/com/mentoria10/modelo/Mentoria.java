@@ -14,18 +14,21 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.Id;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Entity
 @Table(name = "mentoria")
 @Data
 @NoArgsConstructor
+@Getter @Setter
 public class Mentoria {
 
 	 	@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "mentoria_id")
+	    @Column(name = "id")
 	    private Long id;
 
 	    @Column(name = "data")
@@ -47,60 +50,4 @@ public class Mentoria {
 	    @UpdateTimestamp
 	    @Column(name = "atualizado_em")
 	    private LocalDateTime atualizadoEm;
-
-		public Long getId() {
-			return id;
-		}
-
-		public void setId(Long id) {
-			this.id = id;
-		}
-
-		public LocalDate getData() {
-			return data;
-		}
-
-		public void setData(LocalDate data) {
-			this.data = data;
-		}
-
-		public String getAluno() {
-			return aluno;
-		}
-
-		public void setAluno(String aluno) {
-			this.aluno = aluno;
-		}
-
-		public String getMentor() {
-			return mentor;
-		}
-
-		public void setMentor(String mentor) {
-			this.mentor = mentor;
-		}
-
-		public String getConteudo() {
-			return conteudo;
-		}
-
-		public void setConteudo(String conteudo) {
-			this.conteudo = conteudo;
-		}
-
-		public LocalDateTime getCriadoEm() {
-			return criadoEm;
-		}
-
-		public void setCriadoEm(LocalDateTime criadoEm) {
-			this.criadoEm = criadoEm;
-		}
-
-		public LocalDateTime getAtualizadoEm() {
-			return atualizadoEm;
-		}
-
-		public void setAtualizadoEm(LocalDateTime atualizadoEm) {
-			this.atualizadoEm = atualizadoEm;
-		}
 }

@@ -5,55 +5,34 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Entity
 @Table(name = "turmas")
 @NoArgsConstructor
+@Getter @Setter
 public class Turma {
 	
 		@Id
 	    @GeneratedValue(strategy=GenerationType.IDENTITY)
-	    @Column(name = "turma_id", updatable = false)
-	    private Integer turmaId;
+	    @Column(name = "id", updatable = false)
+	    private Long id;
 
-	    @Column(nullable = false)
+	    @Column(name = "ano")
 	    private String ano;
 
-	    @Column(name = "mentor_id", nullable = false)
+	    @Column(name = "mentor_id")
+	    @OneToMany
 	    private String mentorId;
 
-	    public Turma(String ano, String mentorId) {
+	  /*  public Turma(String ano, String mentorId) {
 	        this.ano = ano;
 	        this.mentorId = mentorId;
-	    }
-
-		public Integer getTurmaId() {
-			return turmaId;
-		}
-
-		public void setTurmaId(Integer turmaId) {
-			this.turmaId = turmaId;
-		}
-
-		public String getAno() {
-			return ano;
-		}
-
-		public void setAno(String ano) {
-			this.ano = ano;
-		}
-
-		public String getMentorId() {
-			return mentorId;
-		}
-
-		public void setMentorId(String mentorId) {
-			this.mentorId = mentorId;
-		}
-
+	    }*/
 }
