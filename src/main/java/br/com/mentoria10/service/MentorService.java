@@ -2,13 +2,18 @@ package br.com.mentoria10.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import br.com.mentoria10.modelo.Mentor;
 import br.com.mentoria10.modelo.MentorRequest;
 import br.com.mentoria10.modelo.MentorResponse;
 import br.com.mentoria10.repository.MentorRepository;
 
+@Service
 public class MentorService {
 	
+	@Autowired
 	private final MentorRepository mentorRepository;
 	
 		public MentorService(MentorRepository mentorRepository) {

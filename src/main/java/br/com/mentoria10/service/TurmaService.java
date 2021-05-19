@@ -2,13 +2,18 @@ package br.com.mentoria10.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import br.com.mentoria10.modelo.Turma;
 import br.com.mentoria10.modelo.TurmaRequest;
 import br.com.mentoria10.modelo.TurmaResponse;
 import br.com.mentoria10.repository.TurmaRepository;
 
+@Service
 public class TurmaService {
 	
+	@Autowired
 	private final TurmaRepository turmaReposytory;
 	
 		public TurmaService(TurmaRepository turmaReposytory) {

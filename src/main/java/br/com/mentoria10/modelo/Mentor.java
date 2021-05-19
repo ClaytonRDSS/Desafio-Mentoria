@@ -28,10 +28,10 @@ public class Mentor {
 	@Column(name = "matricula")
 	private String matricula;
 	
-	@ManyToOne
+	@Column
 	private Long alunoId;
 	
-	@OneToOne
+	@Column
 	private Long turmaId;
 
 }
