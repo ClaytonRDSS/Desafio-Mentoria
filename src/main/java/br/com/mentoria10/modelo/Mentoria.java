@@ -19,11 +19,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Entity
+
 @Table(name = "mentoria")
-@Data
+@Data @Getter @Setter
 @NoArgsConstructor
-@Getter @Setter
+@Entity
 public class Mentoria {
 
 	 	@Id
@@ -31,7 +31,7 @@ public class Mentoria {
 	    @Column(name = "id")
 	    private Long id;
 
-	    @Column(name = "data")
+		@Column(name = "data")
 	    private LocalDate data;
 
 	    @Column(name = "aluno_nome")

@@ -1,10 +1,70 @@
 package br.com.mentoria10.controller;
 
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+
+import br.com.mentoria10.modelo.Aluno;
+import br.com.mentoria10.modelo.AlunoRequest;
+import br.com.mentoria10.modelo.AlunoResponse;
+import br.com.mentoria10.service.AlunoService;
+
 
 @RestController
 @RequestMapping("/alunos")
 public class AlunoController {
+	
+	@Autowired
+	private final AlunoService alunoService;
+	
+	public AlunoController(AlunoService alunoService) {
+		this.alunoService = alunoService;
+	}
+	@GetMapping
+	public List<AlunoResponse> findAll(){
+		return alunoService.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public AlunoResponse detalhar(@PathVariable Long id) {
+		return alunoService.detalhar(id);
+	}
+	
+	@PostMapping
+	@Transactional
+	 public ResponseEntity<AlunoResponse> cadastrar(@Validated @RequestBody AlunoRequest alunoRequest){
+		AlunoResponse alunoResponse = alunoService.cadastrar(alunoRequest);
+		return new ResponseEntity<>(alunoResponse, HttpStatus.CREATED);
+
+	}
+	
+	 @PutMapping("/{id}")
+	 public ResponseEntity<AlunoResponse> atualizar(@PathVariable final Long id,
+			 @RequestBody Aluno aluno){
+	        alunoService.atualizar(id, aluno);
+	        AlunoResponse alunoResponse = alunoService.getAluno(id);
+	        return new ResponseEntity<>(alunoResponse, HttpStatus.ACCEPTED);
+	    }
+	 
+	 @DeleteMapping("/{id}")
+	 public void delete(@PathVariable final Long id) {
+	        alunoService.delete(id);
+	 
+	}	
 
 }

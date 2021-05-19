@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
+@Getter @Setter
 @Data
 @NoArgsConstructor
 public class MentoriaResponse {

@@ -9,9 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "mentores")
@@ -35,7 +33,5 @@ public class Mentor {
 	
 	@OneToOne
 	private Long turmaId;
-
-
 
 }

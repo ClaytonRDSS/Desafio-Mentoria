@@ -4,6 +4,7 @@ import lombok.*;
 
 @Data
 @Getter @Setter
+@NoArgsConstructor
 public class MentoriaRequest {
 
 	   private Long alunoid;
