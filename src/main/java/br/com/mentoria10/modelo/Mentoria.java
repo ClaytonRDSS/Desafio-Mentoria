@@ -21,7 +21,7 @@ import lombok.Setter;
 
 
 
-@Table(name = "mentoria")
+@Table(name = "mentorias")
 @Data @Getter @Setter
 @NoArgsConstructor
 @Entity
@@ -29,7 +29,7 @@ public class Mentoria {
 
 	 	@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "id")
+	    @Column(name = "id", updatable = false)
 	    private Long id;
 
 		@Column(name = "data")

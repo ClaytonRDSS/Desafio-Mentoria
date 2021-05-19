@@ -19,7 +19,7 @@ public class Mentor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "id", updatable = false)
 	private Long id;
 	
 	@Column(name = "nome")
@@ -28,10 +28,10 @@ public class Mentor {
 	@Column(name = "matricula")
 	private String matricula;
 	
-	@Column
+	@Column(name = "aluno_id")
 	private Long alunoId;
 	
-	@Column
+	@Column(name = "turma_id")
 	private Long turmaId;
 
 }

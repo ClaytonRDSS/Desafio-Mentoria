@@ -13,28 +13,29 @@ import lombok.*;
 
 
 @Entity
-@Table(name = "aluno")
+@Table(name = "alunos")
 @NoArgsConstructor
 @Getter @Setter
 public class Aluno {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "aluno_id")
+	@Column(name = "id" , updatable = false)
 	private Long id;
-	@Column(name = "aluno_nome")
+	
+	@Column(name = "nome")
 	private String nome;
 	
-	@Column(name = "aluno_cpf")
+	@Column(name = "cpf")
 	private String cpf;
 	
-	@Column(name = "aluno_matricula")
+	@Column(name = "matricula")
 	private String matricula;
 	
-	@Column(name = "aluno_mentorId")
+	@Column(name = "mentorId")
 	private Long memtorId;
 	
-	@Column(name = "aluno_turmaId")
+	@Column(name = "turmaId")
 	private Long turmaId;
 
 }
