@@ -41,7 +41,7 @@ public class AlunoService {
 		 
 	}
 	public void update(Long id, Aluno aluno) {
-		Aluno alunoAtualizar = alunoRepository.findById(id).orElseThrow(() -> new RuntimeException("Turma não encontrada: " +id));
+		Aluno alunoAtualizar = alunoRepository.findById(id).orElseThrow(() -> new RuntimeException("Aluno não encontrado: " +id));
 	
 	}
 	public void deleteById(Long id) {
@@ -59,7 +59,7 @@ public class AlunoService {
 		return alunoRepository.findAll().stream().map(this::toAlunoResponse).collect(Collectors.toList());
 	}
 	public AlunoResponse getAluno(Long id) {
-		Aluno aluno = alunoRepository.findById(id).orElseThrow(() -> new RuntimeException("Turma não encontrada: "+id));
+		Aluno aluno = alunoRepository.findById(id).orElseThrow(() -> new RuntimeException("Aluno não encontrado: "+id));
 		return toAlunoResponse(aluno);
 	}
 }
