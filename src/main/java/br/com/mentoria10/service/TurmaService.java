@@ -5,47 +5,43 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.mentoria10.modelo.Turma;
-import br.com.mentoria10.modelo.TurmaRequest;
-import br.com.mentoria10.modelo.TurmaResponse;
+import br.com.mentoria10.model.Turma;
+import br.com.mentoria10.model.TurmaRequest;
+import br.com.mentoria10.model.TurmaResponse;
 import br.com.mentoria10.repository.TurmaRepository;
 
 @Service
 public class TurmaService {
 	
 	@Autowired
-	private final TurmaRepository turmaReposytory;
-	
-		public TurmaService(TurmaRepository turmaReposytory) {
-			this.turmaReposytory = turmaReposytory;
-		}
+	private TurmaRepository turmaReposytory;
 
 		public List<TurmaResponse> findAll() {
+			return null;
+					
+		}
+
+		public TurmaResponse findById(Long id) {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
-		public TurmaResponse detalhar(Long id) {
+		public TurmaResponse create(TurmaRequest turmaRequest) {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
-		public TurmaResponse cadastra(TurmaRequest turmaRequest) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		public void delete(Integer id) {
+		public void deleteById(Long id) {
 			// TODO Auto-generated method stub
 			
 		}
 
-		public void atualizar(Integer id, Turma turma) {
+		public void update(Long id, Turma turma) {
 			// TODO Auto-generated method stub
 			
 		}
 
-		public TurmaResponse getTurma(Integer id) {
+		public TurmaResponse getTurma(Long id) {
 			// TODO Auto-generated method stub
 			return null;
 		}

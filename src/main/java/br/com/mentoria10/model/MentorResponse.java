@@ -1,10 +1,10 @@
-package br.com.mentoria10.modelo;
+package br.com.mentoria10.model;
 
 import lombok.NoArgsConstructor;
 import lombok.*;
 
 @Getter @Setter
-@NoArgsConstructor
+@AllArgsConstructor
 public class MentorResponse {
 private Long id;
 	

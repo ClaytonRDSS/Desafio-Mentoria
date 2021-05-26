@@ -18,10 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import br.com.mentoria10.modelo.Aluno;
-import br.com.mentoria10.modelo.AlunoRequest;
-import br.com.mentoria10.modelo.AlunoResponse;
+import br.com.mentoria10.model.Aluno;
+import br.com.mentoria10.model.AlunoRequest;
+import br.com.mentoria10.model.AlunoResponse;
 import br.com.mentoria10.service.AlunoService;
 
 
@@ -30,41 +29,38 @@ import br.com.mentoria10.service.AlunoService;
 public class AlunoController {
 	
 	@Autowired
-	private final AlunoService alunoService;
+	private  AlunoService alunoService;
 	
-	public AlunoController(AlunoService alunoService) {
-		this.alunoService = alunoService;
-	}
+	
 	@GetMapping
 	public List<AlunoResponse> findAll(){
 		return alunoService.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public AlunoResponse detalhar(@PathVariable Long id) {
-		return alunoService.detalhar(id);
+	public AlunoResponse findById(@PathVariable Long id) {
+		return alunoService.findById(id);
 	}
 	
 	@PostMapping
 	@Transactional
-	 public ResponseEntity<AlunoResponse> cadastrar(@Validated @RequestBody AlunoRequest alunoRequest){
-		AlunoResponse alunoResponse = alunoService.cadastrar(alunoRequest);
+	 public ResponseEntity<AlunoResponse> create(@Validated @RequestBody AlunoRequest alunoRequest){
+		AlunoResponse alunoResponse = alunoService.create(alunoRequest);
 		return new ResponseEntity<>(alunoResponse, HttpStatus.CREATED);
 
 	}
 	
 	 @PutMapping("/{id}")
-	 public ResponseEntity<AlunoResponse> atualizar(@PathVariable final Long id,
+	 public ResponseEntity<AlunoResponse> update(@PathVariable Long id,
 			 @RequestBody Aluno aluno){
-	        alunoService.atualizar(id, aluno);
+	        alunoService.update(id, aluno);
 	        AlunoResponse alunoResponse = alunoService.getAluno(id);
 	        return new ResponseEntity<>(alunoResponse, HttpStatus.ACCEPTED);
 	    }
 	 
 	 @DeleteMapping("/{id}")
-	 public void delete(@PathVariable final Long id) {
-	        alunoService.delete(id);
-	 
+	 public void deleteById(@PathVariable Long id) {
+	        alunoService.deleteById(id); 
 	}	
 
 }

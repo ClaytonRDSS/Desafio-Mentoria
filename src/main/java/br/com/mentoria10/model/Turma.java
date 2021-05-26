@@ -1,4 +1,4 @@
-package br.com.mentoria10.modelo;
+package br.com.mentoria10.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,7 @@ import javax.persistence.Id;
 
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "turmas")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter @Setter
 public class Turma {
 	

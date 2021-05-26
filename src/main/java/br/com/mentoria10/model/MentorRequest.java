@@ -1,9 +1,9 @@
-package br.com.mentoria10.modelo;
+package br.com.mentoria10.model;
 
 import lombok.*;
 
 @Getter @Setter
-@NoArgsConstructor
+@AllArgsConstructor
 public class MentorRequest {
 
 	private Long id;

@@ -16,10 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import br.com.mentoria10.modelo.Mentoria;
-import br.com.mentoria10.modelo.MentoriaRequest;
-import br.com.mentoria10.modelo.MentoriaResponse;
+import br.com.mentoria10.model.Mentoria;
+import br.com.mentoria10.model.MentoriaRequest;
+import br.com.mentoria10.model.MentoriaResponse;
 import br.com.mentoria10.service.MentoriaService;
 
 
@@ -29,11 +28,7 @@ import br.com.mentoria10.service.MentoriaService;
 public class MentoriaController {
 	
 	@Autowired
-    private final MentoriaService mentoriaService;
-
-    public MentoriaController(MentoriaService mentoriaService) {
-        this.mentoriaService = mentoriaService;
-    }
+    private MentoriaService mentoriaService;
 
     @GetMapping
     public List<MentoriaResponse> findAll(){
@@ -41,27 +36,27 @@ public class MentoriaController {
     }
 
     @GetMapping("/{id}")
-    public MentoriaResponse detalhar(@PathVariable final Long id){
-        return mentoriaService.detalhar(id);
+    public MentoriaResponse findById(@PathVariable final Long id){
+        return mentoriaService.findById(id);
     }
 
     @PostMapping
-    public ResponseEntity<MentoriaResponse> cadastrar(@Validated @RequestBody MentoriaRequest mentoriaRequest ){
-       MentoriaResponse mentoriaResponse = mentoriaService.cadastrar(mentoriaRequest);
+    public ResponseEntity<MentoriaResponse> create(@Validated @RequestBody MentoriaRequest mentoriaRequest ){
+       MentoriaResponse mentoriaResponse = mentoriaService.create(mentoriaRequest);
        return new ResponseEntity<>(mentoriaResponse, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MentoriaResponse> atualizar(@PathVariable final Long id,
+    public ResponseEntity<MentoriaResponse> update(@PathVariable final Long id,
     		@RequestBody Mentoria mentoria){
-        mentoriaService.atualizar(id, mentoria);
+        mentoriaService.update(id, mentoria);
         MentoriaResponse mentoriaResponse = mentoriaService.getMentoria(id);
         return new ResponseEntity<>(mentoriaResponse, HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable final Long id) {
-        mentoriaService.delete(id);
+    public void deleteById(@PathVariable final Long id) {
+        mentoriaService.deleteById(id);
     }
 
 }

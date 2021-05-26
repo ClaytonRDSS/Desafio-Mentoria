@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.mentoria10.modelo.Mentor;
-import br.com.mentoria10.modelo.MentorRequest;
-import br.com.mentoria10.modelo.MentorResponse;
+import br.com.mentoria10.model.Mentor;
+import br.com.mentoria10.model.MentorRequest;
+import br.com.mentoria10.model.MentorResponse;
 import br.com.mentoria10.service.MentorService;
 
 @RestController
@@ -21,9 +21,6 @@ public class MentorController {
 	@Autowired
 	private MentorService mentorService;
 	
-		public MentorController(MentorService mentorService) {
-			this.mentorService = mentorService;
-		}
 	
 	@GetMapping
 	public List<MentorResponse> findAll(){
@@ -31,26 +28,26 @@ public class MentorController {
 	}
 	
 	@GetMapping("/{id}")
-	public MentorResponse detalhar(@PathVariable final Long id) {
-		return mentorService.detalhar(id);
+	public MentorResponse findById(@PathVariable final Long id) {
+		return mentorService.findById(id);
 	}
 	
 	@PostMapping("/{id}")
-	public ResponseEntity<MentorResponse> cadastrar (MentorRequest mentorRequest){
-		MentorResponse mentorResponse = mentorService.cadastrar(mentorRequest);
+	public ResponseEntity<MentorResponse> create (MentorRequest mentorRequest){
+		MentorResponse mentorResponse = mentorService.create(mentorRequest);
 		return new ResponseEntity<>(mentorResponse, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<MentorResponse> atualizar(@PathVariable("id") Long id,
+	public ResponseEntity<MentorResponse> update(@PathVariable("id") Long id,
 			@RequestBody Mentor mentor){
-		mentorService.atualizar(id, mentor);
+		mentorService.update(id, mentor);
 		MentorResponse mentorResponse = mentorService.getMentor(id);
 		return new ResponseEntity<>(mentorResponse, HttpStatus.ACCEPTED);
 	}
 	@DeleteMapping
-	public void delete (@PathVariable("id") Long id ) {
-		mentorService.delete(id);
+	public void deleteById (@PathVariable("id") Long id ) {
+		mentorService.deleteById(id);
 	}
 	
 	

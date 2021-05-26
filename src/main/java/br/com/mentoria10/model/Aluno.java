@@ -1,4 +1,4 @@
-package br.com.mentoria10.modelo;
+package br.com.mentoria10.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,9 +15,10 @@ import lombok.*;
 @Entity
 @Table(name = "alunos")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter @Setter
 public class Aluno {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id" , updatable = false)
@@ -37,5 +38,4 @@ public class Aluno {
 	
 	@Column(name = "turmaId")
 	private Long turmaId;
-
 }

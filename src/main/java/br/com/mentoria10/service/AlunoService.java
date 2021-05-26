@@ -1,54 +1,65 @@
 package br.com.mentoria10.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.mentoria10.modelo.Aluno;
-import br.com.mentoria10.modelo.AlunoRequest;
-import br.com.mentoria10.modelo.AlunoResponse;
+
+
+import br.com.mentoria10.model.Aluno;
+import br.com.mentoria10.model.AlunoRequest;
+import br.com.mentoria10.model.AlunoResponse;
 import br.com.mentoria10.repository.AlunoRepository;
 
 @Service
 public class AlunoService {
 	
 	@Autowired
-	private final AlunoRepository alunoRepository;
+	private  AlunoRepository alunoRepository;	
+	
+	@Autowired
+	private ModelMapper modelMapper;
 	
 	
-	public AlunoService(AlunoRepository alunoRepository) {
-		this.alunoRepository = alunoRepository;
+	private AlunoRequest toAlunoRequest(Aluno aluno) {
+		return modelMapper.map(aluno, AlunoRequest.class);
+	}
+	
+	private AlunoResponse toAlunoResponse(Aluno aluno) {
+		return modelMapper.map(aluno, AlunoResponse.class);
 	}
 
-	public AlunoResponse cadastrar(AlunoRequest alunoRequest) {
-		// TODO Auto-generated method stub
-		return null;
+	public AlunoResponse create(AlunoRequest alunoRequest) {
+		Aluno aluno = toAlunoRequest(alunoRequest);
+		aluno = alunoRepository.save(aluno);
+		AlunoResponse alunoResponse = toAlunoResponse(aluno);
+		return alunoResponse;
+		 
 	}
-
-	public void atualizar(Long id, Aluno aluno) {
-		// TODO Auto-generated method stub
+	public void update(Long id, Aluno aluno) {
+		Aluno alunoAtualizar = alunoRepository.findById(id).orElseThrow(() -> new RuntimeException("Turma não encontrada: " +id));
+	
+	}
+	public void deleteById(Long id) {
+		if(!alunoRepository.existsById(id)) { throw new IllegalArgumentException("Aluno não encontrado");}
+		alunoRepository.deleteById(id);
+	
 		
 	}
-
-	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public AlunoResponse detalhar(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public AlunoResponse findById(Long id) {
+		Aluno aluno = alunoRepository.findById(id).orElseThrow( IllegalArgumentException::new);
+		return toAlunoResponse(aluno);
 	}
 
 	public List<AlunoResponse> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return alunoRepository.findAll().stream().map(this::toAlunoResponse).collect(Collectors.toList());
 	}
-
 	public AlunoResponse getAluno(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Aluno aluno = alunoRepository.findById(id).orElseThrow(() -> new RuntimeException("Turma não encontrada: "+id));
+		return toAlunoResponse(aluno);
 	}
-
 }

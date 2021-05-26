@@ -1,10 +1,11 @@
-package br.com.mentoria10.modelo;
+package br.com.mentoria10.model;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
-@NoArgsConstructor
+@AllArgsConstructor
 public class AlunoRequest {
 	
 	private Long id;
@@ -14,4 +15,8 @@ public class AlunoRequest {
 	private String cpf;
 	
 	private  String matricula;
+	
+	private Long mentorId;
+	
+	private Long turmaId;
 }
