@@ -20,13 +20,13 @@ public class AlunoService {
 	
 	@Autowired
 	private  AlunoRepository alunoRepository;	
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
 	
 	
-	private AlunoRequest toAlunoRequest(Aluno aluno) {
-		return modelMapper.map(aluno, AlunoRequest.class);
+	private Aluno toAlunoRequest(AlunoRequest alunoRequest) {
+		return modelMapper.map(alunoRequest, Aluno.class);
 	}
 	
 	private AlunoResponse toAlunoResponse(Aluno aluno) {
@@ -34,9 +34,9 @@ public class AlunoService {
 	}
 
 	public AlunoResponse create(AlunoRequest alunoRequest) {
-		Aluno aluno = toAlunoRequest(alunoRequest);
-		aluno = alunoRepository.save(aluno);
-		AlunoResponse alunoResponse = toAlunoResponse(aluno);
+		Aluno aluno01 = toAlunoRequest(alunoRequest);
+		aluno01 = alunoRepository.save(aluno01);
+		AlunoResponse alunoResponse = toAlunoResponse(aluno01);
 		return alunoResponse;
 		 
 	}

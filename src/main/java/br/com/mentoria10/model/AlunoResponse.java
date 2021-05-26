@@ -4,6 +4,7 @@ import lombok.NoArgsConstructor;
 import lombok.*;
 
 @Getter
+@Setter
 @AllArgsConstructor
 public class AlunoResponse {
 	

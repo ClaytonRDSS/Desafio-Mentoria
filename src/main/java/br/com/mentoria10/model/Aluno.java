@@ -38,4 +38,5 @@ public class Aluno {
 	
 	@Column(name = "turmaId")
 	private Long turmaId;
+
 }
