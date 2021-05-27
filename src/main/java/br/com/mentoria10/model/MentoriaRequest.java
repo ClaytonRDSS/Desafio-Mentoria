@@ -5,9 +5,10 @@ import lombok.*;
 @Data
 @Getter @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class MentoriaRequest {
 
-	   private Long alunoid;
+	   private Long aluno;
 
 	    private String data;
 

@@ -4,9 +4,8 @@ import lombok.*;
 
 @Getter @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class MentorRequest {
-
-	private Long id;
 	
 	private String nome;
 	

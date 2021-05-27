@@ -1,7 +1,11 @@
 package br.com.mentoria10.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,36 +18,52 @@ import br.com.mentoria10.repository.TurmaRepository;
 public class TurmaService {
 	
 	@Autowired
-	private TurmaRepository turmaReposytory;
+	private TurmaRepository turmaRepository;
+	
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	
+	private Turma toTurmaRequest(TurmaRequest turmaRequest) {
+		return modelMapper.map(turmaRequest, Turma.class);
+	}
+	
+	private TurmaResponse toTurmaResponse(Turma turma) {
+		return modelMapper.map(turma, TurmaResponse.class);
+	}
 
 		public List<TurmaResponse> findAll() {
-			return null;
+		return turmaRepository.findAll().stream().map(this::toTurmaResponse).collect(Collectors.toList());
 					
 		}
 
 		public TurmaResponse findById(Long id) {
-			// TODO Auto-generated method stub
-			return null;
+			Turma turma = turmaRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+			return toTurmaResponse(turma);
 		}
 
 		public TurmaResponse create(TurmaRequest turmaRequest) {
-			// TODO Auto-generated method stub
-			return null;
+			Turma turma01 = toTurmaRequest(turmaRequest);
+			turmaRepository.save(turma01);
+			TurmaResponse turmaResponse = toTurmaResponse(turma01);
+			return turmaResponse;
 		}
 
 		public void deleteById(Long id) {
-			// TODO Auto-generated method stub
+			if(!turmaRepository.existsById(id)) { throw new IllegalArgumentException("Turma não encontrada");}
+			turmaRepository.deleteById(id);
 			
 		}
-
+		@Transactional
 		public void update(Long id, Turma turma) {
-			// TODO Auto-generated method stub
+			Turma atualizar = turmaRepository.findById(id).orElseThrow(() -> new RuntimeException("Turma não encontrada: " +id));
 			
 		}
 
 		public TurmaResponse getTurma(Long id) {
-			// TODO Auto-generated method stub
-			return null;
+			Turma turma = turmaRepository.findById(id).orElseThrow(() -> new RuntimeException("Turma não encontrada: "+id));
+			return toTurmaResponse(turma);
 		}
 
 }

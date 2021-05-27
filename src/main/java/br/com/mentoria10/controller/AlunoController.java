@@ -37,8 +37,8 @@ public class AlunoController {
 		return alunoService.findAll();
 	}
 	
-	@GetMapping("/{id}")
-	public AlunoResponse findById(@PathVariable Long id) {
+	@GetMapping(path = "/{matricula}")
+	public AlunoResponse findById(@PathVariable("id") final Long id) {
 		return alunoService.findById(id);
 	}
 	
@@ -50,7 +50,7 @@ public class AlunoController {
 
 	}
 	
-	 @PutMapping("/{id}")
+	 @PutMapping(path = "/{matricula}")
 	 public ResponseEntity<AlunoResponse> update(@PathVariable Long id,
 			 @RequestBody Aluno aluno){
 	        alunoService.update(id, aluno);
@@ -58,7 +58,7 @@ public class AlunoController {
 	        return new ResponseEntity<>(alunoResponse, HttpStatus.ACCEPTED);
 	    }
 	 
-	 @DeleteMapping("/{id}")
+	 @DeleteMapping(path = "/{matricula}")
 	 public void deleteById(@PathVariable Long id) {
 	        alunoService.deleteById(id); 
 	}	

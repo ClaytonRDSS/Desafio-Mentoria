@@ -1,7 +1,6 @@
 package br.com.mentoria10.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -32,16 +31,18 @@ public class AlunoService {
 	private AlunoResponse toAlunoResponse(Aluno aluno) {
 		return modelMapper.map(aluno, AlunoResponse.class);
 	}
+	
+	
 
 	public AlunoResponse create(AlunoRequest alunoRequest) {
 		Aluno aluno01 = toAlunoRequest(alunoRequest);
-		aluno01 = alunoRepository.save(aluno01);
+		alunoRepository.save(aluno01);
 		AlunoResponse alunoResponse = toAlunoResponse(aluno01);
 		return alunoResponse;
 		 
 	}
 	public void update(Long id, Aluno aluno) {
-		Aluno alunoAtualizar = alunoRepository.findById(id).orElseThrow(() -> new RuntimeException("Aluno não encontrado: " +id));
+		Aluno alunoAtualizar = alunoRepository.findById(id).orElseThrow(() -> new RuntimeException ("Aluno não encontrado: " +id));
 	
 	}
 	public void deleteById(Long id) {

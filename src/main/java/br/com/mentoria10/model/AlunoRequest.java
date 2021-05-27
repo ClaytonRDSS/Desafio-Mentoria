@@ -8,9 +8,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class AlunoRequest {
-	
-	private Long id;
 	
 	private String nome;
 	

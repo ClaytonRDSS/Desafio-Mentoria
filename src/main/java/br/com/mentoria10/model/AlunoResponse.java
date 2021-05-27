@@ -1,11 +1,11 @@
 package br.com.mentoria10.model;
 
-import lombok.NoArgsConstructor;
 import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class AlunoResponse {
 	
 
@@ -16,4 +16,8 @@ public class AlunoResponse {
 	private String matricula;
 	
 	private String cpf;
+
+	private Long mentorId;
+	
+	private Long turmaId;
 }

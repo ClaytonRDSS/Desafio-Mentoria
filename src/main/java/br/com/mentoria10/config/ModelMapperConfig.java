@@ -11,10 +11,6 @@ public class ModelMapperConfig {
 	
 	@Bean
 	public ModelMapper modelMapper() {
-		//var modelMapper = new ModelMapper();
-		//modelMapper.createTypeMap(Aluno.class, AlunoRequest.class).
-		//<Long>addMapping(src -> src.getAluno(), (dest, value) -> dest.SetAluno(value));
-		//return modelMapper;
 		return new ModelMapper();
 	}
 

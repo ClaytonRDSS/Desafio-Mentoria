@@ -13,7 +13,7 @@ import lombok.*;
 
 
 @Entity
-@Table(name = "alunos")
+@Table(name = "aluno")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter

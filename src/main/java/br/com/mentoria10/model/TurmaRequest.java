@@ -7,9 +7,8 @@ import lombok.Setter;
 
 @Getter @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class TurmaRequest {
-	
-	private Long id;
 	
 	private String ano;
 	

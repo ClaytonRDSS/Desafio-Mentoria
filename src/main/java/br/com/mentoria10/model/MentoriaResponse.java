@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter @Setter
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class MentoriaResponse {
 
     private Long id;
