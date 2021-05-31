@@ -8,9 +8,15 @@ import lombok.*;
 @NoArgsConstructor
 public class MentoriaRequest {
 
-	   private Long aluno;
+	  private String data;
 
-	    private String data;
+	    private String aluno;
+
+	    private String mentor;
 
 	    private String conteudo;
+
+	    private String criadoEm;
+
+	    private String atualizadoEm;
 }

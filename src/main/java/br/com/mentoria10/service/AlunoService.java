@@ -43,17 +43,16 @@ public class AlunoService {
 	}
 	public void update(Long id, Aluno aluno) {
 		Aluno alunoAtualizar = alunoRepository.findById(id).orElseThrow(() -> new RuntimeException ("Aluno não encontrado: " +id));
-	
+		alunoRepository.save(alunoAtualizar);
 	}
 	public void deleteById(Long id) {
 		if(!alunoRepository.existsById(id)) { throw new IllegalArgumentException("Aluno não encontrado");}
 		alunoRepository.deleteById(id);
-	
 		
 	}
 	public AlunoResponse findById(Long id) {
-		Aluno aluno = alunoRepository.findById(id).orElseThrow( IllegalArgumentException::new);
-		return toAlunoResponse(aluno);
+	 Aluno aluno = alunoRepository.findById(id).orElseThrow( IllegalArgumentException::new);
+	 return toAlunoResponse(aluno);
 	}
 
 	public List<AlunoResponse> findAll() {

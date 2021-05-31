@@ -15,10 +15,10 @@ public class AlunoRequest {
 	
 	private String cpf;
 	
-	private  String matricula;
+	private String matricula;
 	
-	private Long mentorId;
+	private String mentorId;
 	
-	private Long turmaId;
+	private String turmaId;
 
 }

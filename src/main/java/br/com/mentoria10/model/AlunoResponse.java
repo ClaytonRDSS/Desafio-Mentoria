@@ -7,17 +7,14 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AlunoResponse {
-	
 
-	private Long id;
-	
 	private String nome;
 	
-	private String matricula;
-	
 	private String cpf;
-
-	private Long mentorId;
 	
-	private Long turmaId;
+	private String matricula;
+
+	private String mentorId;
+	
+	private String turmaId;
 }

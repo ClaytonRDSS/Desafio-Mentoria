@@ -2,6 +2,8 @@ package br.com.mentoria10.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +34,7 @@ public class TurmaController {
 	    	return turmaService.findAll();
 	    	}
 
-	    @GetMapping(path = "/{id}")
+	    @GetMapping("/{id}")
 	    public TurmaResponse findById (@PathVariable("id") final Long id){
 	    	return turmaService.findById(id);
 	    	}
@@ -43,12 +45,12 @@ public class TurmaController {
 	        return new ResponseEntity<>(turmaResponse, HttpStatus.CREATED);
 	    }
 
-	    @DeleteMapping(path = "/{id}")
+	    @DeleteMapping("/{id}")
 	    public void deleteById(@PathVariable("id") Long id ){
-	    	turmaService.deleteById(id);
+	    	this.turmaService.deleteById(id);
 	    	}
 
-	    @PutMapping(path = "/{id}")
+	    @PutMapping
 	    public ResponseEntity<TurmaResponse> update(@PathVariable("id") Long id,
 	                                                     @RequestBody Turma turma){
 	        turmaService.update(id, turma);

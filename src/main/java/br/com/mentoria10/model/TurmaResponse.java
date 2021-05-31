@@ -10,9 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TurmaResponse {
 
-
-	private Long id;
-	
 	private String ano;
 	
 	private String mentorId;

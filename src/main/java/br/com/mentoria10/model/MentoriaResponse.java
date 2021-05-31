@@ -12,8 +12,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class MentoriaResponse {
 
-    private Long id;
-
     private String data;
 
     private String aluno;

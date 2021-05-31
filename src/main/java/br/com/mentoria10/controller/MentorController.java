@@ -27,7 +27,7 @@ public class MentorController {
 		return mentorService.findAll();
 	}
 	
-	@GetMapping(path = "/{id}")
+	@GetMapping("/{id}")
 	public MentorResponse findById(@PathVariable("id") final Long id) {
 		return mentorService.findById(id);
 	}
@@ -38,16 +38,16 @@ public class MentorController {
 		return new ResponseEntity<>(mentorResponse, HttpStatus.CREATED);
 	}
 	
-	@PutMapping(path = "/{id}")
+	@PutMapping
 	public ResponseEntity<MentorResponse> update(@PathVariable("id") Long id,
 			@RequestBody Mentor mentor){
 		mentorService.update(id, mentor);
 		MentorResponse mentorResponse = mentorService.getMentor(id);
 		return new ResponseEntity<>(mentorResponse, HttpStatus.ACCEPTED);
 	}
-	@DeleteMapping(path = "/{id}")
+	@DeleteMapping("/{id}")
 	public void deleteById (@PathVariable("id") Long id ) {
-		mentorService.deleteById(id);
+		this.mentorService.deleteById(id);
 	}
 	
 	
