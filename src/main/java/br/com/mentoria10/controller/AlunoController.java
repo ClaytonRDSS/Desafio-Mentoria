@@ -32,6 +32,7 @@ public class AlunoController {
 	private  AlunoService alunoService;
 	
 	
+	
 	@GetMapping
 	public List<AlunoResponse> findAll(){
 		return alunoService.findAll();
@@ -43,19 +44,18 @@ public class AlunoController {
 	}
 	
 	@PostMapping
-	@Transactional
 	 public ResponseEntity<AlunoResponse> create(@Validated @RequestBody AlunoRequest alunoRequest){
 		AlunoResponse alunoResponse = alunoService.create(alunoRequest);
 		return new ResponseEntity<>(alunoResponse, HttpStatus.CREATED);
 
 	}
 	
-	 @PutMapping
-	 @Transactional
+	 @PutMapping("/alunos/{id}")
 	 public ResponseEntity<AlunoResponse> update(@PathVariable Long id,
 			 @RequestBody Aluno aluno){
 	        alunoService.update(id, aluno);
 	        AlunoResponse alunoResponse = alunoService.getAluno(id);
+	        //return new ResponseEntity<>(mentorService.update(id,mentor), HttpStatus.ACCEPTED);
 	        return new ResponseEntity<>(alunoResponse, HttpStatus.ACCEPTED);
 	    }
 	 

@@ -55,7 +55,7 @@ public class TurmaService {
 			turmaRepository.deleteById(id);
 			
 		}
-		@Transactional
+
 		public void update(Long id, Turma turma) {
 			Turma atualizar = turmaRepository.findById(id).orElseThrow(() -> new RuntimeException("Turma não encontrada: " +id));
 			turmaRepository.save(atualizar);

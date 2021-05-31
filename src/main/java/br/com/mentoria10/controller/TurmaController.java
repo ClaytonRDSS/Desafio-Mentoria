@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.mentoria10.model.Turma;
 import br.com.mentoria10.model.TurmaRequest;
 import br.com.mentoria10.model.TurmaResponse;
+import br.com.mentoria10.repository.TurmaRepository;
 import br.com.mentoria10.service.TurmaService;
 
 
@@ -49,7 +50,7 @@ public class TurmaController {
 	    	this.turmaService.deleteById(id);
 	    	}
 
-	    @PutMapping
+	    @PutMapping("/update/{id}")
 	    public ResponseEntity<TurmaResponse> update(@PathVariable("id") Long id,
 	                                                     @RequestBody Turma turma){
 	        turmaService.update(id, turma);
