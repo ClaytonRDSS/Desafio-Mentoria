@@ -8,12 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 public class MentorResponse {
 
-	private Long id;
-	
 	private String nome;
 	
 	private Long alunoId;
 	
 	private Long turmaId;
-
 }

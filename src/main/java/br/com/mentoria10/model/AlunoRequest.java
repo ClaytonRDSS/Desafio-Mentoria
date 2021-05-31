@@ -17,8 +17,8 @@ public class AlunoRequest {
 	
 	private String matricula;
 	
-	private String mentorId;
+	private Long mentorId;
 	
-	private String turmaId;
+	private Long turmaId;
 
 }

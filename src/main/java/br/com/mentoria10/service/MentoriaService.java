@@ -8,12 +8,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.mentoria10.model.Aluno;
-import br.com.mentoria10.model.AlunoResponse;
 import br.com.mentoria10.model.Mentoria;
 import br.com.mentoria10.model.MentoriaRequest;
 import br.com.mentoria10.model.MentoriaResponse;
 import br.com.mentoria10.repository.MentoriaRepository;
+
+
 
 @Service
 public class MentoriaService {
