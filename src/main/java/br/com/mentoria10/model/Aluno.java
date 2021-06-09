@@ -5,9 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.sun.istack.NotNull;
 
 import lombok.NoArgsConstructor;
 import lombok.*;
@@ -19,7 +21,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Aluno {
 
 	@Id
@@ -37,10 +38,11 @@ public class Aluno {
 	private String matricula;
 	
 	@Column(name = "mentorId")
-	private String memtorId;
+	private Long memtorId;
 	
+
 	@Column(name = "turmaId")
-	private String turmaId;
+	private Long turmaId;
 
 	
 

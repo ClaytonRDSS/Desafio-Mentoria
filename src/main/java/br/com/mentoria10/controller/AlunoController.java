@@ -46,14 +46,14 @@ public class AlunoController {
 	@PostMapping
 	 public ResponseEntity<AlunoResponse> create(@Validated @RequestBody AlunoRequest alunoRequest){
 		AlunoResponse alunoResponse = alunoService.create(alunoRequest);
-		return new ResponseEntity<>(alunoResponse, HttpStatus.CREATED);
-
+		return new  ResponseEntity<>(alunoResponse, HttpStatus.CREATED);
+	
 	}
 	
-	 @PutMapping("/alunos/{id}")
+	 @PutMapping
 	 public ResponseEntity<AlunoResponse> update(@PathVariable Long id,
 			 @RequestBody Aluno aluno){
-	        alunoService.update(id, aluno);
+	        alunoService.update(id,aluno);
 	        AlunoResponse alunoResponse = alunoService.getAluno(id);
 	        //return new ResponseEntity<>(mentorService.update(id,mentor), HttpStatus.ACCEPTED);
 	        return new ResponseEntity<>(alunoResponse, HttpStatus.ACCEPTED);

@@ -36,7 +36,7 @@ public class MentoriaController {
     }
 
     @GetMapping("/{id}")
-    public MentoriaResponse findById(@PathVariable("id") final Long id){
+    public MentoriaResponse findById(@PathVariable("id")Long id){
         return mentoriaService.findById(id);
     }
 
